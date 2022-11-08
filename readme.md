@@ -1,8 +1,12 @@
+//command to run:
 cd testDetectorInspector
 npm i 
 node index.js
 //image will generate in imgFile folder
 
+//command to test function by JEST
+cd testDetectorInspector
+jest /src
 
 First i use puppeteer to use the headless brower to access to the URL and take the DOM
 
