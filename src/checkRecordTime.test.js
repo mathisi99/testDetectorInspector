@@ -24,23 +24,38 @@ describe("Testing function checkRecordTime", () => {
 })
 
 describe("Testing function checkNumberWithItsUnit", () =>{
-  it('return true', () => {
+  it('number with unit, return true', () => {
     expect(checkNumberWithItsUnit('1.3 m')).toBe(true);
   })
-  it('return true', () => {
+  it('number with unit, return true', () => {
     expect(checkNumberWithItsUnit('(5 ft 8 in')).toBe(true);
   })
-  it('return true', () => {
+  it('two pairs number with unit, return true', () => {
     expect(checkNumberWithItsUnit('1.73 m (5 ft 8 in)')).toBe(true);
   })
-  it('return true', () => {
+  it('two pairs number with unit with space, return true ', () => {
     expect(checkNumberWithItsUnit('1.73 m (5 ft 8 in) ')).toBe(true);
   })
-  it('return true', () => {
+  it('number plus fraction with unit, return true', () => {
+    expect(checkNumberWithItsUnit('(6 ft 7+3/4 in)')).toBe(true);
+  })
+  it('number plus fraction with unit, return true', () => {
     expect(checkNumberWithItsUnit('2.03 m (6 ft 7+3/4 in)')).toBe(true);
   })
   it('return true', () => {
     expect(checkNumberWithItsUnit('1.485 m (4 ft 10+1⁄4 in)')).toBe(true);
+  })
+  it('number use "." ,return true', () => {
+    expect(checkNumberWithItsUnit('1.485')).toBe(true);
+  })
+  it('number use "," instead of "." return true', () => {
+    expect(checkNumberWithItsUnit('1,485')).toBe(true);
+  })
+  it('number error using ",." at the same time return false', () => {
+    expect(checkNumberWithItsUnit('1.,485')).toBe(false);
+  })
+  it('number error using ",." at the same time return false', () => {
+    expect(checkNumberWithItsUnit('1,.485')).toBe(false);
   })
 })
 

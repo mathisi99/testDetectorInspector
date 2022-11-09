@@ -13,20 +13,20 @@ async function getDOM(url){
 
   //take the DOM of the URL
   const dom = new jsdom.JSDOM(html);
-  var window = dom.window;
+  const window = dom.window;
   
 
   //create the jquery on the window we get from url
-  var $ = require('jquery')(window);
+  let $ = require('jquery')(window);
 
 
   //if one page have more than 1 table.
   //and this is get the type of data of each column in the table
   $('.wikitable tbody').get().forEach((tableElement, tableIndex) => {
-    var numericCols = {};
-    var values = {};
-    var valueCol;
-    var numCol = 0;
+    let numericCols = {};
+    let values = {};
+    let valueCol;
+    let numCol = 0;
     
 
     $(tableElement).find('tr:nth-child(2) td').get().forEach((tdElement, tdIndex) => {
@@ -69,19 +69,19 @@ async function getDOM(url){
       }  
     }
 
-    var xValues = values['date'];
-    var yValues = valueCol;
+    let xValues = values['date'];
+    let yValues = valueCol;
 
     
-    var options = {};
-    var name = url.split("/").at(-1);
+    let options = {};
+    let name = url.split("/").at(-1);
     generateBarChart(xValues, yValues, 'm', `./imgFile/${name}_chart_${tableIndex}.png`, options);
   })
   
   await browser.close();
 }
 
-var url = 'https://en.wikipedia.org/wiki/Women%27s_high_jump_world_record_progression';
+let url = 'https://en.wikipedia.org/wiki/Women%27s_high_jump_world_record_progression';
 
 getDOM(url);
 
