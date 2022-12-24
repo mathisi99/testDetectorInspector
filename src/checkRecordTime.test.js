@@ -1,4 +1,6 @@
-const {checkRecordTime, checkNumberWithItsUnit, checkDate} = require(__dirname + '/checkRecordTime.js')
+const { describe, it } = require("node:test");
+
+const {checkRecordTime, checkNumberWithItsUnit, checkDate, IncreasingQuater} = require(__dirname + '/checkRecordTime.js')
 
 describe("Testing function checkRecordTime", () => {
   it("Return true", () => {
@@ -80,5 +82,32 @@ describe('Testing function parseDate', () => {
   })
   it('number format,string: Rosemarie Ackermann (GDR), return false', () => {
     expect(checkDate("Rosemarie Ackermann (GDR)")).toBe(false);
+  })
+})
+
+describe('Testing for IncreasingQuater', () => {
+  it(`input number: 1.4, return 1.5`, () => {
+    expect(IncreasingQuater(1.4)).toBe(1.5);
+  })
+  it(`input number: 1.6, return 1.75`, () => {
+    expect(IncreasingQuater(1.6)).toBe(1.75);
+  })
+  it(`input number: 1.32, return 1.5`, () => {
+    expect(IncreasingQuater(1.32)).toBe(1.5);
+  })
+  it(`input number: 1.15, return 1.25`, () => {
+    expect(IncreasingQuater(1.15)).toBe(1.25);
+  })
+  it(`input number: 0.7, return 0.75`, () => {
+    expect(IncreasingQuater(0.7)).toBe(0.75);
+  })
+  it(`input number: 0.2, return 0.25`, () => {
+    expect(IncreasingQuater(0.2)).toBe(0.25);
+  })
+  it(`input number: 0.1, return 0.25`, () => {
+    expect(IncreasingQuater(0.1)).toBe(0.25);
+  })
+  it(`input number: -0.25, return 0`, () => {
+    expect(IncreasingQuater(-3)).toBe(0);
   })
 })

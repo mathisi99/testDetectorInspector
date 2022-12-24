@@ -2,15 +2,14 @@ const ChartJsImage = require("chartjs-to-image");
 
 
 function checkRecordTime(value){
-  //the typeof value is textContent from DOM so it will be str // format HH:MM:SS or HH:MM:SS.[0-9]
+  //the typeof value is textContent from DOM -> it return str // format HH:MM:SS or HH:MM:SS.S
   let reg = new RegExp(/^(?:([01]?\d|2[0-3]):([0-5]?\d):)?([0-5]?\d?\.?\d)$/g);
   return reg.test(value);
 }
 
 function checkNumberWithItsUnit(str){
-  //[n] is numeric then [n+1] is quantity : m , ft , in 
-  //this will test with 
-  let tmp = str.replace(/\(?\)?/g, '').replace('⁄','/');
+  //[n] is numeric after it can be unit : m , ft , in ...
+  let tmp = str.replace(/\(?\)?/g, '').replace('⁄','/'); //some case it is wrong 
   let reg = new RegExp(/^((?<value>\d+[.,]?\d*)(\+\d\/\d)?\s?(?<unit>m²|m\^2|cm²|cm\^2|ft|in|m|mm|°C|°F|l|kg)?\s?)+$/g);
   return reg.test(tmp);
 }
@@ -45,6 +44,10 @@ function generateBarChart(xValArray, yValArray, yUnit, saveDir, options){
   
 }
 
+function IncreasingQuater(num){
+
+}
+
 
 
 module.exports = {
@@ -52,4 +55,5 @@ module.exports = {
   checkNumberWithItsUnit,
   checkDate,
   generateBarChart,
+  IncreasingQuater,
 };

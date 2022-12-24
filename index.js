@@ -76,7 +76,7 @@ async function getDOM(url){
     let options = {};
     let name = url.split("/").at(-1);
     generateBarChart(xValues, yValues, 'm', `./imgFile/${name}_chart_${tableIndex}.png`, options);
-  })
+  }) // end of tableElement forEach loop
   
   await browser.close();
 }
